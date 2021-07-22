@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap");
+
+$White: hsl(0, 0%, 100%);
+$Black: hsl(0, 0%, 0%);
+$Dark-Gray: hsl(0, 0%, 55%);
+$Very-Dark-Gray: hsl(0, 0%, 41%);
+$font-altas: "Alata", serif;
+$font-sans: "Josefin Sans", sans-serif;
+
+@import "sectionone";
+@mixin nav-links-before {
+  &:hover::before, &:focus::before{
+    width: 50%;
+    opacity: 1;
+  }
+}
+@mixin anchor-el {
+  color: $White;
+  text-decoration: none;
+  font-family: $font-altas;
+  font-size: 1.5rem;
+  &:focus{
+    outline: none;
+  }
+  &::before {
+    content: "";
+    width: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    bottom: 0;
+    background-color: $White;
+    position: absolute;
+    opacity: 0;
+    transition: 200ms ease;
+  }
+}
+@mixin list-defualt {
+  list-style: none;
+  margin-left: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+  &:first-of-type{
+    margin-left: 0;
+  }
+}
+@mixin nav-links {
+  li {
+    @include list-defualt();
+    a {
+      @include anchor-el();
+      @include nav-links-before();
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+}
+.container {
+  width: 77%;
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+}
+.header {
+  height: 82.5vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../images/desktop/image-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  @media screen and (max-width: 760px) {
+    height: 100vh;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    .nav-links {
+      display: flex;
+      @include nav-links();
+      @media screen and (max-width: 760px) {
+        color: white;
+        display: none;
+      }
+    }
+    .menu-btn-container {
+      display: none;
+      cursor: pointer;
+      @media screen and (max-width: 760px) {
+        display: block;
+        .menu-btn {
+          display: none;
+          &.btn-active {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+  &::before {
+    content: "";
+    min-width: 0;
+    background: $Black;
+    position: absolute;
+    min-height: 0;
+    z-index: 5;
+    transition: all 300ms;
+    height: 100%;
+    left: 0;
+  }
+  @media screen and (max-width: 760px) {
+    &.active {
+      &::before {
+        min-width: 100%;
+      }
+      .container {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .nav-links {
+        display: block;
+        flex-direction: column;
+        position: absolute;
+        z-index: 10;
+        left: 0;
+        height: 100%;
+        top: 20%;
+        li {
+          width: max-content;
+          margin-left: 0;
+          margin-top: 2rem;
+          a {
+            font-size: 4rem;
+            font-family: $font-sans;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 7rem 0;
+    justify-content: space-between;
+    @media screen and (max-width: 760px) {
+      margin: 7rem 0 15rem 0;
+    }
+  }
+  .heading {
+    border: 0.25em solid $White;
+    width: 60%;
+    min-width: 55rem;
+    padding: 3.2rem 3.6rem;
+    @media screen and (max-width: 760px) {
+      min-width: min-content;
+      width: 100%;
+      padding: 2rem;
+      margin: auto;
+    }
+    h1 {
+      font-size: 7rem;
+      text-transform: uppercase;
+      font-family: $font-sans;
+      color: $White;
+      font-weight: 300;
+      word-break: break-word;
+      @media screen and (max-width: 760px) {
+        font-size: 6rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 5rem;
+      }
+    }
+  }
+}
+@import "sectionone";
+@import "sectiontwo";
+@import "footer";
