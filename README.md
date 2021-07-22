@@ -30,7 +30,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/vishalbrdr/loopstudios-landing-page](https://github.com/vishalbrdr/loopstudios-landing-page)
-- Live Site URL: [https://elegant-lumiere-1bfd74.netlify.app/](https://elegant-lumiere-1bfd74.netlify.app/)
+- Live Site URL: [https://vishalbrdr.github.io/loopstudios-landing-page/](https://vishalbrdr.github.io/loopstudios-landing-page/)
 
 ## My process
 
